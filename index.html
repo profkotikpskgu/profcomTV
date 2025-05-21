@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TV интерфейс</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<section id="profcom_dlya_vseh" class="screen active" data-screen="1">
+			<img src="src/logos.png" alt="Логотипы" id="logos" class="background-images">
+			<img src="src/profcom_dlya_vseh.png" id="profcom_dlya_vseh-text" class="background-images">
+		</section>
+		<section id="logotip" class="screen" data-screen="2">fe
+			<video autoplay loop muted playsinline style="width: 100%;" class="screen-video" id="logoProfVideo">
+      			<source src="src/logotip.webm" type="video/webm">
+    		</video>	
+		</section>
+	</div>
+
+	<div class="background">
+		<img src="src/krug_niz.png" alt="" id="krug_niz" class="background-images">
+		<img src="src/krug_verh.png" alt="" id="krug_verh" class="background-images">
+		
+		<div id="timer">
+			<span id="date">ср, 21 мая</span><br>
+			<span id="time">12:29:24</span>
+		</div>
+	</div>
+	
+	<script>
+		// Инициализация переменных
+		const screens = document.querySelectorAll('.screen');
+		let currentIndex = 0;
+		const intervalTime = 10000; // 10 секунд
+
+		// Функция переключения экранов
+		function showNextScreen() {
+			const currentScreen = screens[currentIndex];
+			const nextIndex = (currentIndex + 1) % screens.length;
+			const nextScreen = screens[nextIndex];
+			
+			// Останавливаем видео в текущей секции
+			const currentVideo = currentScreen.querySelector('video');
+			if (currentVideo) {
+				currentVideo.pause();
+				currentVideo.currentTime = 0;
+			}
+			
+			// Переключаем экраны
+			currentScreen.classList.remove('active');
+			nextScreen.classList.add('active');
+			
+			// Запускаем видео в новой секции
+			const nextVideo = nextScreen.querySelector('video');
+			if (nextVideo) {
+				nextVideo.play().catch(e => {
+					console.log('Не удалось запустить видео:', e);
+					// Показываем кнопку Play, если автовоспроизведение заблокировано
+					const playBtn = document.createElement('button');
+					playBtn.textContent = 'Play Video';
+					playBtn.style.position = 'absolute';
+					playBtn.style.zIndex = '100';
+					playBtn.addEventListener('click', () => {
+						nextVideo.play();
+						playBtn.remove();
+					});
+					nextScreen.appendChild(playBtn);
+				});
+			}
+			
+			currentIndex = nextIndex;
+		}
+
+		// Запускаем переключение экранов
+		if (screens.length > 1) {
+			setInterval(showNextScreen, intervalTime);
+		}
+
+		// Функция для обновления времени
+		function updateDateTime() {
+			const timeElement = document.getElementById('time');
+			const dateElement = document.getElementById('date');
+			
+			const now = new Date();
+    
+			// Форматирование даты
+			const days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+			const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 
+						  'июля', 'августа', 'сентября', 'октбяря', 'ноября', 'декабря'];
+
+			const dayOfWeek = days[now.getDay()];
+			const dayOfMonth = now.getDate();
+			const month = months[now.getMonth()];
+
+			dateElement.textContent = `${dayOfWeek}, ${dayOfMonth} ${month}`;
+
+			// Форматирование времени
+			const hours = String(now.getHours()).padStart(2, '0');
+			const minutes = String(now.getMinutes()).padStart(2, '0');
+			const seconds = String(now.getSeconds()).padStart(2, '0');
+
+			timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+		}
+
+		// Обновляем время
+		updateDateTime();
+		setInterval(updateDateTime, 1000);
+
+		// Пытаемся запустить видео сразу
+		document.querySelectorAll('video').forEach(video => {
+			video.play().catch(e => console.log('Автовоспроизведение заблокировано:', e));
+		});
+	</script>
+</body>
+</html>

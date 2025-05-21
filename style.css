@@ -1,0 +1,104 @@
+@font-face {
+	font-family: MontserratAlternates_Medium;
+	src: url(src/MontserratAlternates-Medium.ttf);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url("src/background.png");
+
+	height: 100vh;
+	width: 100vw;
+
+	overflow-x: hidden;
+	/* overflow-y: hidden; */
+}
+.container, .background{
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.background-images {
+	display: block;
+	position: absolute;
+}
+#krug_niz {
+	bottom: 0;
+	left: 0;
+	width: 22%;
+	height: auto;
+	min-width: 400px;
+}
+#krug_verh {
+	top: 0;
+	right: 0;
+	width: 20%;
+	height: auto;
+
+	min-width: 300px;
+}
+
+.screen {
+	display: none;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
+	opacity: 0;
+  	transition: opacity 1s ease-in-out;
+  	pointer-events: none;
+}
+
+.screen.active {
+  opacity: 1;
+  display: block;
+  pointer-events: auto;
+}
+
+#logos {
+	top: 0;
+	left: 30px;
+
+	width: 28%;
+	min-width: 400px;
+	height: auto;
+}
+
+#profcom_dlya_vseh-text {
+	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
+
+	height: auto;
+	width: 65%;
+	min-width: 800px;
+}
+
+#timer {
+	font-family: MontserratAlternates_Medium;
+	
+	position: absolute;
+	bottom: 15px;
+	left: 77%;
+}
+
+#date {
+	font-size: 3.1dvw;
+}
+
+#time {
+	font-size: 5.3dvw;
+}
+
+#logoProfVideo{
+	width: 30dvw;
+	min-width: 500px;
+
+	position: absolute;
+	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
+}
