@@ -31,15 +31,12 @@ body {
 	left: 0;
 	width: 22%;
 	height: auto;
-	min-width: 400px;
 }
 #krug_verh {
 	top: 0;
 	right: 0;
 	width: 20%;
 	height: auto;
-
-	min-width: 300px;
 }
 
 .screen {
@@ -65,7 +62,6 @@ body {
 	left: 30px;
 
 	width: 28%;
-	min-width: 400px;
 	height: auto;
 }
 
@@ -75,7 +71,6 @@ body {
 
 	height: auto;
 	width: 65%;
-	min-width: 800px;
 }
 
 #timer {
@@ -96,7 +91,6 @@ body {
 
 #logoProfVideo{
 	width: 30dvw;
-	min-width: 500px;
 
 	position: absolute;
 	margin: auto;
