@@ -63,7 +63,7 @@ body {
   position: absolute;
   top: 20px;
   left: 30px;
-  width: min(28%, 400px); /* Адаптивный размер с максимумом */
+  width: min(28%, 800px); /* Адаптивный размер с максимумом */
   height: auto;
 }
 
@@ -99,7 +99,7 @@ body {
 
 /* Стили для времени */
 #time {
-  font-size: 72px;
+  font-size: 110px;
   display: block;
   margin: 0;
   line-height: 1;
@@ -116,6 +116,6 @@ body {
 /* Дополнительные медиазапросы для ТВ */
 @media (min-width: 1920px) {
   #date { font-size: 2.5vmin; }
-  #time { font-size: 4.5vmin; }
+  #time { font-size: 6.5vmin; }
   #logoProfVideo { width: 25dvw; }
 }
