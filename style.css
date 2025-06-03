@@ -1,56 +1,55 @@
 @font-face {
   font-family: 'MontserratAlternates_Medium';
   src: url('src/MontserratAlternates-Medium.ttf') format('truetype');
-  font-display: swap; /* Шрифт загрузится асинхронно */
+  font-display: swap;
 }
 
 body {
-  margin: 0;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 
-           env(safe-area-inset-bottom) env(safe-area-inset-left); /* Защита от overscan на ТВ */
-  background-image: url("src/background.png");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  font-family: 'MontserratAlternates_Medium', sans-serif;
-}
+	margin: 0;
+	padding: 0;
+	background-image: url("src/background.png");
 
-.container, .background {
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+	height: 100vh;
+	width: 100vw;
+
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.container, .background{
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 .background-images {
-  display: block;
-  position: absolute;
+	display: block;
+	position: absolute;
 }
-
 #krug_niz {
-  bottom: 0;
-  left: 0;
-  width: min(22%, 300px); /* Ограничение максимального размера */
-  height: auto;
+	bottom: 0;
+	left: 0;
+	width: 22%;
+	height: auto;
 }
-
 #krug_verh {
-  top: 0;
-  right: 0;
-  width: min(20%, 250px);
-  height: auto;
+	top: 0;
+	right: 0;
+	width: 20%;
+	height: auto;
 }
 
 .screen {
-  display: none;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  pointer-events: none;
+	display: none;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
+	opacity: 0;
+  	transition: opacity 1s ease-in-out;
+  	pointer-events: none;
 }
 
 .screen.active {
@@ -60,39 +59,36 @@ body {
 }
 
 #logos {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  width: min(28%, 800px); /* Адаптивный размер с максимумом */
-  height: auto;
+	top: 0;
+	left: 30px;
+
+	width: 28%;
+	height: auto;
 }
 
 #profcom_dlya_vseh-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(65%, 800px); /* Гибкий размер */
-  height: auto;
+	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
+
+	height: auto;
+	width: 65%;
 }
 
-/* Контейнер таймера - сделаем его видимым */
 #timer {
   font-family: 'MontserratAlternates_Medium', sans-serif;
   position: absolute;
-  bottom: 5%;  /* Отступ от нижнего края */
-  right: 5%;   /* Отступ от правого края */
-  color: black; /* Явно задаём цвет (измените под ваш дизайн) */
+  bottom: 5%;  
+  right: 5%;   
+  color: black; 
   text-align: right;
-  z-index: 100; /* Поднимаем над другими элементами */
+  z-index: 100; 
   padding: 10px;
   border-radius: 5px;
 }
 
-/* Стили для даты */
 #date {
-  font-size: 50px;  /* Фиксированный размер для теста */
-  display: block;   /* Каждый элемент на новой строке */
+  font-size: 50px;  
+  display: block;  
   margin: 0;
   line-height: 1.2;
 }
@@ -105,12 +101,12 @@ body {
   line-height: 1;
 }
 
-#logoProfVideo {
-  width: min(30dvw, 500px); /* Максимум — 500px */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#logoProfVideo{
+	width: 30dvw;
+
+	position: absolute;
+	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
 }
 
 /* Дополнительные медиазапросы для ТВ */
